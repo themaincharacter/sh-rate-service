@@ -51,7 +51,6 @@ public class RateResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response newRates(List<Rate> rates) {
         if(rates == null || rates.isEmpty()) {
-            System.out.println("null or empty");
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         rateService.clearRates();
@@ -59,7 +58,6 @@ public class RateResource {
             if(rateService.rateIsValid(rate)) {
                 rateService.addRate(rate);
             } else {
-                System.out.println("invalid rate" + rate.toString());
                 rateService.clearRates();
                 return Response.status(Response.Status.BAD_REQUEST).build();
             }
