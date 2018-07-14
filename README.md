@@ -1,0 +1,1 @@
+# sh-rate-service
