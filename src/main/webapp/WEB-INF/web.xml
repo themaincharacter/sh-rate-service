@@ -10,6 +10,13 @@
             <param-name>javax.ws.rs.Application</param-name>
             <param-value>com.spot.hero.example.SpotHeroRateResourceConfig</param-value>
         </init-param>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>
+                io.swagger.jaxrs.listing,
+                com.spot.hero.example.resource
+            </param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>Rate</servlet-name>
@@ -22,7 +29,6 @@
         <listener-class>com.spot.hero.example.ApplicationListener</listener-class>
     </listener>
 
-
     <servlet>
         <servlet-name>metrics</servlet-name>
         <servlet-class>com.codahale.metrics.servlets.AdminServlet</servlet-class>
@@ -32,5 +38,18 @@
         <url-pattern>/spothero/metrics/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Jersey2Config</servlet-name>
+        <servlet-class>io.swagger.jersey.config.JerseyJaxrsConfig</servlet-class>
+        <init-param>
+            <param-name>api.version</param-name>
+            <param-value>1.0.0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>swagger.api.basepath</param-name>
+            <param-value>http://localhost:8080/spothero</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
 
 </web-app>

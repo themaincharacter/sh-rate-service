@@ -6,6 +6,7 @@ import com.spot.hero.example.resource.status.InvalidDateFormat;
 import com.spot.hero.example.resource.status.PriceUnavailable;
 import com.spot.hero.example.service.RateService;
 import com.spot.hero.example.model.Rate;
+import io.swagger.annotations.Api;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -17,9 +18,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
-/**
- * Root resource
- */
+
+@Api
 @Path("rate")
 @Produces({"application/json", "application/xml"})
 public class RateResource {
